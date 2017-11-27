@@ -435,6 +435,7 @@ public class TDialog {
         lp.setMargins(lp.leftMargin, top, lp.rightMargin, lp.bottomMargin);
         mContentView.setLayoutParams(lp);
     }
+
     /**
      * @param specialDp the unit is dp
      */
@@ -452,6 +453,7 @@ public class TDialog {
         lp.setMargins(special, lp.topMargin, special, lp.bottomMargin);
         mContentView.setLayoutParams(lp);
     }
+
     public void setInAnim(Animation inAnim) {
         mInAnim = inAnim;
         if (mOutAnim == null) {
@@ -483,4 +485,41 @@ public class TDialog {
         }
     }
 
+    public void setMsgGravity(int gravity) {
+        mMsgTV.setGravity(gravity);
+    }
+
+    public void setTitleGravity(int gravity) {
+        mTitleTV.setGravity(gravity);
+    }
+
+    /**
+     * @param leftDp   the unit is dp
+     * @param topDp    the unit is dp
+     * @param rightDp  the unit is dp
+     * @param bottomDp the unit is dp
+     */
+    public void setMsgPaddingLeft(int leftDp, int topDp, int rightDp, int bottomDp) {
+        mMsgTV.setPadding(DensityUtil.dp2px(mActivity, leftDp), DensityUtil.dp2px(mActivity, topDp),
+                DensityUtil.dp2px(mActivity, rightDp), DensityUtil.dp2px(mActivity, bottomDp));
+    }
+
+    /**
+     * @param leftDp   the unit is dp
+     * @param topDp    the unit is dp
+     * @param rightDp  the unit is dp
+     * @param bottomDp the unit is dp
+     */
+    public void setTitlePaddingLeft(int leftDp, int topDp, int rightDp, int bottomDp) {
+        mTitleTV.setPadding(DensityUtil.dp2px(mActivity, leftDp), DensityUtil.dp2px(mActivity, topDp),
+                DensityUtil.dp2px(mActivity, rightDp), DensityUtil.dp2px(mActivity, bottomDp));
+    }
+
+    public TextView getTitleView() {
+        return mTitleTV;
+    }
+
+    public TextView getMsgView() {
+        return mMsgTV;
+    }
 }

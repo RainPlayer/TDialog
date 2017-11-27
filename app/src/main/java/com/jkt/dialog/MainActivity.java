@@ -3,6 +3,7 @@ package com.jkt.dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -102,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements TDialog.onItemCli
                             closeSoftInput(et);
                     }
                 });
+                mTDialog.setMsgGravity(Gravity.LEFT);
+                mTDialog.setMsgPaddingLeft(10,0,10,0);
                 mTDialog.setItemTextColorAt(0, getResources().getColor(R.color.bgColor_overlay));
                 mTDialog.addView(inflate);
                 mTDialog.show();
