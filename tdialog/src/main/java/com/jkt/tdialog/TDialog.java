@@ -36,6 +36,7 @@ public class TDialog {
     private boolean mIsShowing;
     private LinearLayout mCenterLL;
     private LinearLayout mDownSheetLL;
+    private boolean mNormalHidden = true;
 
     public enum Style {
         Center, DownSheet
@@ -83,7 +84,9 @@ public class TDialog {
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
                 if (mCancelable && action == MotionEvent.ACTION_UP) {
-                    dismiss(true);
+                    if (mNormalHidden) {
+                        dismiss(true);
+                    }
                 }
                 return true;
             }
@@ -187,7 +190,9 @@ public class TDialog {
                     if (mItemClickListener != null) {
                         mItemClickListener.onItemClick(TDialog.this, finalI);
                     }
-                    dismiss(false);
+                    if (mNormalHidden) {
+                        dismiss(false);
+                    }
                 }
             });
 
@@ -209,7 +214,9 @@ public class TDialog {
                 if (mItemClickListener != null) {
                     mItemClickListener.onItemClick(TDialog.this, position);
                 }
-                dismiss(false);
+                if (mNormalHidden) {
+                    dismiss(false);
+                }
             }
         });
         if (mStyle == DownSheet) {
@@ -218,7 +225,9 @@ public class TDialog {
             mCancelTV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dismiss(true);
+                    if (mNormalHidden) {
+                        dismiss(true);
+                    }
                 }
             });
         }
@@ -242,11 +251,15 @@ public class TDialog {
     }
 
     public void dismiss() {
-        dismiss(false);
+        if (mNormalHidden) {
+            dismiss(false);
+        }
     }
 
     public void dismissImmediately() {
-        dismissImmediately(false);
+        if (mNormalHidden) {
+            dismissImmediately(false);
+        }
     }
 
     private void dismiss(final boolean cancelListener) {
@@ -521,5 +534,13 @@ public class TDialog {
 
     public TextView getMsgView() {
         return mMsgTV;
+    }
+
+    public boolean isShowing() {
+        return mIsShowing;
+    }
+
+    public void isNormalHidden(boolean normalHidden) {
+        mNormalHidden = normalHidden;
     }
 }

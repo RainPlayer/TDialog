@@ -100,11 +100,11 @@ public class MainActivity extends AppCompatActivity implements TDialog.onItemCli
                         , new TDialog.onItemClickListener() {
                     @Override
                     public void onItemClick(Object object, int position) {
-                            closeSoftInput(et);
+                        closeSoftInput(et);
                     }
                 });
                 mTDialog.setMsgGravity(Gravity.LEFT);
-                mTDialog.setMsgPaddingLeft(10,0,10,0);
+                mTDialog.setMsgPaddingLeft(10, 0, 10, 0);
                 mTDialog.setItemTextColorAt(0, getResources().getColor(R.color.bgColor_overlay));
                 mTDialog.addView(inflate);
                 mTDialog.show();
